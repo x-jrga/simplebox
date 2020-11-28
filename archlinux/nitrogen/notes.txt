@@ -1,0 +1,6 @@
+1) Run nitrogen
+nitrogen &
+
+2) Go to preferences and add directory where images can be found
+3) Select images and apply
+4) Set fill size setting (Zoomed, etc)

@@ -1,0 +1,5 @@
+#Copy iptables rules to iptables directory
+cp iptables.rules /etc/iptables/
+
+#Enable iptables service at boot
+systemctl enable iptables.service

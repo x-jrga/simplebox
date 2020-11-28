@@ -1,0 +1,19 @@
+lsmod | grep vm
+lsmod | virtio
+#Load virtualization modules
+cp virtualization.conf /etc/modules-load.d/
+
+#Manage virtual machines
+virsh list --all
+virsh start newvm
+virsh shutdown newvm
+virsh destroy newvm
+virsh edit newvm
+virt-viewer newvm
+virsh net-list
+virsh snapshot-list --domain newvm
+virsh snapshot-create-as --domain newvm --name "template"
+virsh snapshot-revert --domain newvm --snapshotname template
+virsh snapshot-delete newvm template
+virsh undefine newvm
+rm -f ~/.local/share/libvirt/images/newvm.qcow2

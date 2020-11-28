@@ -1,0 +1,8 @@
+#Copy netctl configuration file to netctl directory
+cp laptop /etc/netctl/laptop
+
+#Start networking
+netctl start laptop
+
+#Stop networking
+netctl stop laptop

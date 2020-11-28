@@ -1,0 +1,2 @@
+#Copy configuration file to conky configuration dir
+cp conky.conf .config/conky/

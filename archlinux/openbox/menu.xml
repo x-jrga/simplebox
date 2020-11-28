@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+    <menu id="root-menu" label="OpenBox 3">
+        <menu id="1" label="Development">
+            <item label="IntelliJ Idea"> <action name="Execute">
+                <execute>idea</execute>
+            </action> </item>
+        </menu>
+        <menu id="2" label="Editors">
+            <item label="FeatherNotes"> <action name="Execute">
+                <execute>feathernotes</execute>
+            </action> </item>
+            <item label="FeatherPad"> <action name="Execute">
+                <execute>featherpad</execute>
+            </action> </item>
+            <item label="Nano"> <action name="Execute">
+                <execute>qterminal -e nano</execute>
+            </action> </item>
+            <item label="Vim"> <action name="Execute">
+                <execute>qterminal -e vim</execute>
+            </action> </item>
+        </menu>
+        <menu id="8" label="Education">
+            <item label="VYM - View Your Mind"> <action name="Execute">
+                <execute>vym</execute>
+            </action> </item>
+        </menu>
+        <menu id="6" label="Graphics">
+            <item label="Dia Diagram Editor"> <action name="Execute">
+                <execute>dia</execute>
+            </action> </item>
+            <item label="GNU Image Manipulation Program"> <action name="Execute">
+                <execute>gimp-2.10</execute>
+            </action> </item>
+            <item label="LXImage"> <action name="Execute">
+                <execute>lximage-qt</execute>
+            </action> </item>
+            <item label="The GIMP"> <action name="Execute">
+                <execute>gimp</execute>
+            </action> </item>
+            <item label="XSane - Scanning"> <action name="Execute">
+                <execute>xsane</execute>
+            </action> </item>
+        </menu>
+        <menu id="7" label="Multimedia">
+            <item label="VLC media player"> <action name="Execute">
+                <execute>vlc</execute>
+            </action> </item>
+            <item label="Xfburn"> <action name="Execute">
+                <execute>xfburn</execute>
+            </action> </item>
+        </menu>
+        <menu id="5" label="Network">
+            <item label="FireFox"> <action name="Execute">
+                <execute>firefox</execute>
+            </action> </item>
+            <item label="Links"> <action name="Execute">
+                <execute>xlinks -g</execute>
+            </action> </item>
+        </menu>
+        <menu id="3" label="Office">
+            <item label="Document Viewer"> <action name="Execute">
+                <execute>evince</execute>
+            </action> </item>
+            <item label="qpdfview"> <action name="Execute">
+                <execute>qpdfview</execute>
+            </action> </item>
+        </menu>
+        <menu id="19" label="Shells">
+            <item label="QTerminal"> <action name="Execute">
+                <execute>qterminal</execute>
+            </action> </item>
+        </menu>
+        <menu id="37" label="System">
+            <menu id="36" label="Settings">
+                <item label="ARandR"> <action name="Execute">
+                    <execute>arandr</execute>
+                </action> </item>
+                <item label="Manage Printing"> <action name="Execute">
+                    <execute>xdg-open http://localhost:631/</execute>
+                </action> </item>
+                <item label="nitrogen"> <action name="Execute">
+                    <execute>nitrogen</execute>
+                </action> </item>
+                <item label="Openbox Settings"> <action name="Execute">
+                    <execute>obconf-qt</execute>
+                </action> </item>
+            </menu>
+            <item label="Graphical Disk Map"> <action name="Execute">
+                <execute>gdmap</execute>
+            </action> </item>
+            <item label="KeePassXC"> <action name="Execute">
+                <execute>keepassxc</execute>
+            </action> </item>
+            <item label="Virtual Machine Manager"> <action name="Execute">
+                <execute>virt-manager</execute>
+            </action> </item>
+        </menu>
+        <menu id="38" label="Utilities">
+            <item label="PCManFM-Qt File Manager"> <action name="Execute">
+                <execute>pcmanfm-qt</execute>
+                <!--execute>exo-open --launch FileManager</execute-->
+            </action> </item>
+            <item label="MATE Calculator"> <action name="Execute">
+                <execute>mate-calc</execute>
+            </action> </item>
+            <item label="Xtrlock"> <action name="Execute">
+                <execute>xtrlock</execute>
+            </action> </item>
+        </menu>
+        <separator/>
+        <menu id="40" label="OpenBox">
+            <menu id="client-list-menu"/>
+            <item label="Reconfigure"> <action name="Reconfigure"/> </item>
+            <item label="Restart"><action name="Restart"/></item>
+            <separator/>
+            <item label="Exit"> <action name="Exit"/> </item>
+        </menu>
+    </menu>
+</openbox_menu>

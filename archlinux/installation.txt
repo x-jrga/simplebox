@@ -1,0 +1,125 @@
+Simple ArchLinux Installation (My Notes)
+----------------------------------------
+
+#This is a archlinux installation on virtual machine. It works on physical machine also.
+
+#Download image
+https://www.archlinux.org/download/
+
+#Save iso image to usb drive
+dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
+
+#Boot the live environment
+
+#Enable automatic system clock synchronization
+timedatectl set-ntp true
+
+#List devices and partitions
+cat /proc/partitions
+
+#Create partitions (swap and /)
+fdisk /dev/vda
+#/dev/vda1 -> n,p,1,2048,+512M,p
+#/dev/vda2 -> n,p,2,1050624,20971519,p,w
+
+#Set up linux swap area on disk partition
+mkswap /dev/vda1
+swapon /dev/vda1
+
+#Create ext4 filesystem on /dev/vda2
+mkfs.ext4 /dev/vda2
+
+#Attach the filesystem found on /dev/vda2 to the directory /mnt.  This will be your future root directory.
+mount /dev/vda2 /mnt
+
+#Run pacstrap script to install the base package, linux kernel and firmware 
+pacstrap /mnt base linux-lts linux-firmware
+
+#Change root directory. The is a chroot jail
+arch-chroot /mnt
+
+#Configure system-wide timezone of the local system
+ln -sf /usr/share/zoneinfo/US/Central /etc/localtime
+
+#Set hardware clock to the current System Time
+hwclock --systohc
+
+#Set name of machine as known to applications that run locally
+echo "laptop" >> /etc/hostname
+
+#Set mapping of hostnames to IP addresses in /etc/hosts
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1" >> /etc/hosts
+echo "127.0.0.1 laptop.localhost laptop" >> /etc/hosts
+
+#Change password for user root
+passwd
+
+#Install system and software packages. It will install packages directly from the remote repositories, including all dependencies required to run the packages
+pacman -S grub nano dnsmasq dhcpcd links wget xorg xorg-xinit openbox pcmanfm-qt qterminal featherpad obconf-qt qpdfview adwaita-icon-theme gnome-icon-theme hicolor-icon-theme papirus-icon-theme breeze-icons oxygen-icons xorg-fonts-type1 sddm firefox unzip zip vim feathernotes xtrlock dmenu arandr pulsemixer menumaker udiskie nitrogen lximage-qt xfburn gdmap vlc netctl openssh conky fontconfig filezilla
+
+#It will ask a few questions before proceeding with installation.
+#default=all
+#ttf-font -> 1) gnu-free-fonts
+#resolvconf -> 1) openresolv
+#Proceed with installation [Y/n] Y
+
+#Install GRUB to device
+grub-install /dev/vda
+
+#Generate a GRUB configuration file
+grub-mkconfig -o /boot/grub/grub.cfg
+
+#Create a new user account and home directory (from skeleton directory)
+useradd -m newaccount
+
+#Set user password
+passwd newaccount
+
+#Become user newaccount
+su - newaccount
+
+#Copy xinitrc
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+
+#Edit ~/.xinitrc, comment out entries and add a new one
+nano .xinitrc
+#twm &
+#xclock -geometry 50x50-1+1 &
+#xterm -geometry 80x50+494+51 &
+#xterm -geometry 80x20+494-0 &
+#exec xterm -geometry 80x66+0+0 -name login
+exec openbox-session
+
+#Generate openbox menu from installed programs
+mmaker OpenBox -t QTerminal -f
+
+#Leave newaccount environment
+exit
+
+#Enable a sddm service at boot
+systemctl enable sddm
+
+#Leave chrooted environment
+exit
+
+#Reboot
+reboot
+
+-----
+
+#Things to do after your are logged in
+
+#Check networking (as root)
+ip addr
+dhcpcd (wait a few seconds)
+#right click on desktop, select multimedia, select firefox to browse 
+
+#Configure networking
+#Configure openbox
+#Configure conky
+#Configure dmenu
+#Configure other things like setting up your wallpaper
+
+-----
+Notes from https://wiki.archlinux.org/index.php/installation_guide

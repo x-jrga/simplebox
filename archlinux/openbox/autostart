@@ -1,0 +1,5 @@
+/home/newaccount/.screenlayout/setMonitor.sh &
+udiskie &
+nitrogen --restore &
+conky &
+
