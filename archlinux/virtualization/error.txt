@@ -1,0 +1,4 @@
+#If virtio modules are not loaded
+virsh start newvm
+error: failed to connect to the hypervisor
+error: Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such file or directory

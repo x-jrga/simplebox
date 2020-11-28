@@ -1,6 +1,8 @@
-lsmod | grep vm
+#Check kernel modules that support KVM are loaded
+lsmod | grep kvm
 lsmod | virtio
-#Load virtualization modules
+
+#Copy kernel virtualization modules to modules-load.d directory
 cp virtualization.conf /etc/modules-load.d/
 
 #Manage virtual machines
