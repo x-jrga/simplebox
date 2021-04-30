@@ -27,9 +27,9 @@ netinst image:
 https://www.debian.org/CD/netinst/
 
 netinst image to usb memory stick:
-dd if=debian-10.3.0-amd64-netinst.iso of=/dev/sdx bs=1M
+dd if=debian-10.9.0-amd64-netinst.iso of=/dev/sdx bs=1M
 
-rc.xml keybinding snippet:
+.config/openbox/rc.xml keybinding snippet:
 <!-- Launch dmenu when Alt+d is pressed -->
 <keybind key="A-d">
   <action name="Execute">
@@ -37,24 +37,23 @@ rc.xml keybinding snippet:
     <command>dmenu_run</command>
   </action>
 </keybind>
-<!-- Launch lxterminal when Alt+l is pressed -->
-<keybind key="A-l">
+<!-- Launch xfce4-terminal when Alt+t is pressed -->
+<keybind key="A-t">
   <action name="Execute">
-    <name>lxterminal</name>
-    <command>lxterminal</command>
+    <name>xfce4-terminal</name>
+    <command>xfce4-terminal</command>
    </action>
 </keybind>
 
-lightdm-gtk-greeter.conf snippet:
-background=#source:/opt/image.png
-#background=#stretched:/opt/image.png
-#background=#zoomed:/opt/image.png
+/etc/lightdm/lightdm-gtk-greeter.conf snippet:
+background=/opt/image.png
 hide-user-image = true
 
-autostart snippet:
+.config/openbox/autostart snippet:
 nitrogen --restore &
-lxterminal &
+conky &
+xscreensaver -nosplash &
 
-environment snippet:
+.config/openbox/environment snippet:
 export PATH=$HOME/bin:$PATH
 
